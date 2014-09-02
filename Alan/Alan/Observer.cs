@@ -27,7 +27,6 @@ namespace Alan
         public void Observe()
         {
             VisualInformation leVisuals = new VisualInformation();
-
             ObserveHealth(leVisuals.GetHealthVisual());
         }
 

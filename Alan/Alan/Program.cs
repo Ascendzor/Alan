@@ -15,10 +15,18 @@ namespace Alan
             Observer leObserver = new Observer();
             Actor leActor = new Actor();
 
+
             while(true)
             {
-                leObserver.Observe();
-                leActor.Act();
+                try
+                {
+                    leObserver.Observe();
+                    leActor.Act();
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Something somewhere fucked up");
+                }
 
                 Thread.Sleep(1000);
             }
