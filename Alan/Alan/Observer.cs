@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.Threading;
 using System.IO;
 using Winsoft.Ocr;
+using Alan.ObservedModels;
 
 namespace Alan
 {
@@ -30,7 +31,7 @@ namespace Alan
             ObserveHealth(leVisuals.GetHealthVisual());
         }
 
-        private int ObserveHealth(Bitmap leHealthVisual)
+        private void ObserveHealth(Bitmap leHealthVisual)
         {
             try
             {
@@ -43,14 +44,16 @@ namespace Alan
                 string[] healths = health.Split('/');
                 int currentHealth = Convert.ToInt32(healths[0]);
                 int maximumHealth = Convert.ToInt32(healths[1]);
-                Console.WriteLine(currentHealth);
-                return currentHealth;
+
+                Health.CurrentHealth = currentHealth;
+                Health.MaximumHealth = maximumHealth;
+
+                Health.Print();
             }
             catch(Exception e)
             {
                 Console.WriteLine("prolly just misread the health");
             }
-            return 999999;
         }
     }
 }

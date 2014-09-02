@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alan.ObservedModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ namespace Alan
         static void Main(string[] args)
         {
             Observer leObserver = new Observer();
+            Actor leActor = new Actor();
 
             while(true)
             {
                 leObserver.Observe();
+                leActor.Act();
 
                 Thread.Sleep(1000);
             }
