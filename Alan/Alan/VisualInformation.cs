@@ -20,17 +20,12 @@ namespace Alan
 
         public Bitmap GetHealthVisual()
         {
-            var bounds = new Rectangle(0, 0, 100, 100);
+            var bounds = new Rectangle(0, 0, 300, 70);
             var bmp = new Bitmap(bounds.Width, bounds.Height, PixelFormat.Format32bppArgb);
             
-            leFullInformation.Save("asd.jpg");
             Graphics gfx = Graphics.FromImage(bmp);
-            gfx.DrawImage(leFullInformation, new Rectangle(0, 0, 100, 100), new Rectangle(110, 850, 100, 100), GraphicsUnit.Pixel);
-            
-            bmp.Save("Le.jpg");
-
+            gfx.DrawImage(leFullInformation, new Rectangle(0, 0, 500, 70), new Rectangle(100, 1600, 800, 70), GraphicsUnit.Pixel);
             return bmp;
-            
         }
 
         private Bitmap GenerateImage()
