@@ -16,7 +16,7 @@ namespace Alan
 
         private void CheckHealth()
         {
-            if(Health.CurrentHealth < (Health.MaximumHealth/2))
+            if(Health.CurrentHealth < (Health.MaximumHealth - 40))
             {
                 Input.DrinkPotion();
             }

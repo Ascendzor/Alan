@@ -26,6 +26,7 @@ namespace Alan
                 catch(Exception e)
                 {
                     Console.WriteLine("Something somewhere fucked up");
+                    Console.WriteLine(e);
                 }
 
                 Thread.Sleep(1000);

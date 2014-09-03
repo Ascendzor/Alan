@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actor.cs" />
+    <Compile Include="Grid.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="ObservedModels\Health.cs" />
     <Compile Include="Observer.cs" />
