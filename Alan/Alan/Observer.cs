@@ -81,13 +81,23 @@ namespace Alan
 
         public void ObserveSpace(Bitmap leMiniMap)
         {
+            Bitmap leBitmap = new Bitmap(20, 20);
             for(int x=0; x<grid.Length; x++)
             {
                 for(int y=0; y<grid[0].Length; y++)
                 {
                     grid[x][y].CalculateWalkability(leMiniMap);
+                    if(grid[x][y].IsWalkable())
+                    {
+                        leBitmap.SetPixel(x, y, Color.Green);
+                    }
+                    else
+                    {
+                        leBitmap.SetPixel(x, y, Color.Red);
+                    }
                 }
             }
+            leBitmap.Save("walkability.jpg");
         }
     }
 }

@@ -48,15 +48,20 @@ namespace Alan
             int averageBlue = totalBlue / pixelCount;
 
             Console.WriteLine("grid: " + this.x + " " + this.y + "\t averageColour: " + averageRed + " " + averageGreen + " " + averageBlue);
-            if(averageRed > 75)
+            if(averageRed+averageGreen > 160)
             {
                 this.goodWalkability = false;
-            }else if(averageBlue > 65)
+            }else if(averageBlue > 70)
             {
                 this.goodWalkability = false;
             }
 
             Console.WriteLine(goodWalkability);
+        }
+
+        public bool IsWalkable()
+        {
+            return goodWalkability;
         }
     }
 }
