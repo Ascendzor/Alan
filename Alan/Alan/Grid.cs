@@ -35,11 +35,11 @@ namespace Alan
                     Color lePixel = leMiniMap.GetPixel(x, y);
 
                     //check for cliff
-                    if(lePixel.R > 82 && lePixel.R < 89)
+                    if(lePixel.R > 81 && lePixel.R < 90)
                     {
-                        if(lePixel.G > 51 && lePixel.G < 57) 
+                        if(lePixel.G > 50 && lePixel.G < 58) 
                         {
-                            if (lePixel.B > 41 && lePixel.B < 47)
+                            if (lePixel.B > 40 && lePixel.B < 48)
                             {
                                 goodWalkability = false;
                             }
@@ -58,6 +58,21 @@ namespace Alan
                         }
                     }
                 }
+            }
+        }
+
+        public void CalculateWalkability(bool right, bool down, bool left, bool up)
+        {
+            int theBads = 0;
+            bool[] leBros = { right, down, left, up };
+            foreach(bool leBro in leBros)
+            {
+                if (!leBro) theBads++;
+            }
+
+            if(theBads > 2)
+            {
+                goodWalkability = false;
             }
         }
 

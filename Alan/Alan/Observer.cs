@@ -18,6 +18,7 @@ namespace Alan
         private Ocr ocr;
         private VisualInformation leVisuals;
         private Grid[][] grid;
+        private int meshCount = 50;
 
         public Observer()
         {
@@ -38,7 +39,6 @@ namespace Alan
 
         private void DefineWalkabilityGrid(Bitmap leMiniMap)
         {
-            int meshCount = 20;
             int gridSquare = leMiniMap.Width / meshCount;
             grid = new Grid[meshCount][];
             for (int row = 0; row < meshCount; row++)
@@ -89,13 +89,25 @@ namespace Alan
 
         public void ObserveSpace(Bitmap leMiniMap)
         {
-            Bitmap leBitmap = new Bitmap(20, 20);
+            Bitmap leBitmap = new Bitmap(meshCount, meshCount);
             for(int x=0; x<grid.Length; x++)
             {
                 for(int y=0; y<grid[0].Length; y++)
                 {
                     grid[x][y].CalculateWalkability(leMiniMap);
-                    if(grid[x][y].IsWalkable())
+                }
+            }
+            for (int x = 1; x < grid.Length-1; x++)
+            {
+                for (int y = 1; y < grid[0].Length-1; y++)
+                {
+                    bool right = grid[x+1][y].IsWalkable();
+                    bool down = grid[x][y-1].IsWalkable();
+                    bool left = grid[x-1][y].IsWalkable();
+                    bool up = grid[x][y+1].IsWalkable();
+                    grid[x][y].CalculateWalkability(right, down, left, up);
+
+                    if (grid[x][y].IsWalkable())
                     {
                         Map.Segments[x][y] = true;
                         leBitmap.SetPixel(x, y, Color.Green);
