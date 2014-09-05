@@ -52,6 +52,14 @@ namespace Alan
                     grid[x][y] = new Grid(x * gridSquare, y * gridSquare, gridSquare, gridSquare);
                 }
             }
+
+
+            Map.gridWidth = meshCount;
+            Map.Segments = new bool[meshCount][];
+            for(int row=0; row<Map.Segments.Length; row++)
+            {
+                Map.Segments[row] = new bool[meshCount];
+            }
         }
 
         private void ObserveHealth(Bitmap leHealthVisual)
@@ -89,10 +97,12 @@ namespace Alan
                     grid[x][y].CalculateWalkability(leMiniMap);
                     if(grid[x][y].IsWalkable())
                     {
+                        Map.Segments[x][y] = true;
                         leBitmap.SetPixel(x, y, Color.Green);
                     }
                     else
                     {
+                        Map.Segments[x][y] = false;
                         leBitmap.SetPixel(x, y, Color.Red);
                     }
                 }

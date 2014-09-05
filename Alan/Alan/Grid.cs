@@ -27,36 +27,38 @@ namespace Alan
 
         public void CalculateWalkability(Bitmap leMiniMap)
         {
-            int totalRed = 0;
-            int totalGreen = 0;
-            int totalBlue = 0;
-            int pixelCount = 0;
-
+            goodWalkability = true;
             for(int x=this.x; x<(this.x+this.width); x++)
             {
                 for(int y=this.y; y<(this.y+this.height); y++)
                 {
-                    totalRed += leMiniMap.GetPixel(x, y).R;
-                    totalGreen += leMiniMap.GetPixel(x, y).G;
-                    totalBlue += leMiniMap.GetPixel(x, y).B;
-                    pixelCount++;
+                    Color lePixel = leMiniMap.GetPixel(x, y);
+
+                    //check for cliff
+                    if(lePixel.R > 82 && lePixel.R < 89)
+                    {
+                        if(lePixel.G > 51 && lePixel.G < 57) 
+                        {
+                            if (lePixel.B > 41 && lePixel.B < 47)
+                            {
+                                goodWalkability = false;
+                            }
+                        }
+                    }
+                    
+                    //check for water
+                    if(lePixel.R > 88 && lePixel.R < 92)
+                    {
+                        if(lePixel.G > 123 && lePixel.G < 127) 
+                        {
+                            if (lePixel.B > 121 && lePixel.B < 125)
+                            {
+                                goodWalkability = false;
+                            }
+                        }
+                    }
                 }
             }
-
-            int averageRed = totalRed / pixelCount;
-            int averageGreen = totalGreen / pixelCount;
-            int averageBlue = totalBlue / pixelCount;
-
-            Console.WriteLine("grid: " + this.x + " " + this.y + "\t averageColour: " + averageRed + " " + averageGreen + " " + averageBlue);
-            if(averageRed+averageGreen > 160)
-            {
-                this.goodWalkability = false;
-            }else if(averageBlue > 70)
-            {
-                this.goodWalkability = false;
-            }
-
-            Console.WriteLine(goodWalkability);
         }
 
         public bool IsWalkable()
