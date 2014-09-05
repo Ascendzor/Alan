@@ -15,7 +15,7 @@ namespace Alan
             Observer leObserver = new Observer();
             Actor leActor = new Actor();
 
-
+            int leEnd = 5;
             while(true)
             {
                 try

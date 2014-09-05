@@ -10,6 +10,9 @@ namespace Alan
 {
     public class Actor
     {
+        private enum Directions {Right, Down, Left, Up};
+        private Directions alansDirection = Directions.Right;
+
         public void Act()
         {
             CheckHealth();
@@ -26,20 +29,24 @@ namespace Alan
 
         private void Move()
         {
+            Console.WriteLine("le move");
             Point leExplorer = new Point(Map.gridWidth / 2, Map.gridWidth / 2);
-            int distanceFromRightEdge = 0;
-            while(true)
+            
+            if(alansDirection == Directions.Right)
             {
-                if(Map.Segments[leExplorer.X][leExplorer.Y])
+                if (Map.Segments[leExplorer.X + 1][leExplorer.Y])
                 {
-                    leExplorer.X++;
-                    distanceFromRightEdge++;
+                    Input.MoveRight();
+                }
+                else
+                {
+                    alansDirection = Directions.Down;
                 }
             }
 
-            if(distanceFromRightEdge < 2)
+            if(alansDirection == Directions.Down)
             {
-
+                Input.MoveDown();
             }
         }
     }
