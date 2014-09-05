@@ -29,7 +29,7 @@ namespace Alan
                     Console.WriteLine(e);
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
     }

@@ -12,6 +12,7 @@ namespace Alan
     {
         private enum Directions {Right = 0, Down = 1, Left = 2, Up = 3};
         private Directions alansDirection = Directions.Right;
+        private int rotationsInOneDirectionInARow = 0;
 
         public void Act()
         {
@@ -30,13 +31,16 @@ namespace Alan
         private void Move()
         {
             Point alansLocation = new Point(Map.gridWidth / 2, Map.gridWidth / 2);
-            if (CanMove((Directions)(((int)alansDirection + 3) % 4), alansLocation))
+            if (CanMove((Directions)(((int)alansDirection + 3) % 4), alansLocation) && rotationsInOneDirectionInARow != 4)
             {
+                rotationsInOneDirectionInARow++;
                 alansDirection = (Directions)(((int)alansDirection + 3) % 4);
             }
             else if (!CanMove(alansDirection, alansLocation))
             {
                 alansDirection = (Directions)(((int)alansDirection + 1) % 4);
+
+                rotationsInOneDirectionInARow = 0;
             }
             MoveForward(alansDirection);
             Console.WriteLine(alansDirection);

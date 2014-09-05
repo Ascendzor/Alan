@@ -13,16 +13,18 @@ namespace Alan
     {
         private static InputSimulator leInputs = new InputSimulator();
 
+        private static int clickDistance = 15;
+
         public static void MoveRight()
         {
-            leInputs.Mouse.MoveMouseTo(65535 / 2 + 65535 / 7, 65535 / 2);
+            leInputs.Mouse.MoveMouseTo(65535 / 2 + 65535 / clickDistance, 65535 / 2);
             Thread.Sleep(50);
             leInputs.Mouse.LeftButtonClick();
         }
 
         public static void MoveDown()
         {
-            leInputs.Mouse.MoveMouseTo(65535 / 2, 65535 / 2 + 65535 / 7);
+            leInputs.Mouse.MoveMouseTo(65535 / 2, 65535 / 2 + 65535 / clickDistance);
             Thread.Sleep(50);
             leInputs.Mouse.LeftButtonClick();
         }
@@ -30,14 +32,14 @@ namespace Alan
         public static void MoveLeft()
         {
             Console.WriteLine("asd");
-            leInputs.Mouse.MoveMouseTo(65535 / 2 - 65535 / 7, 65535 / 2);
+            leInputs.Mouse.MoveMouseTo(65535 / 2 - 65535 / clickDistance, 65535 / 2);
             Thread.Sleep(50);
             leInputs.Mouse.LeftButtonClick();
         }
         
         public static void MoveUp()
         {
-            leInputs.Mouse.MoveMouseTo(65535 / 2 , 65535 / 2 - 65535 / 7);
+            leInputs.Mouse.MoveMouseTo(65535 / 2, 65535 / 2 - 65535 / clickDistance);
             Thread.Sleep(50);
             leInputs.Mouse.LeftButtonClick();
         }

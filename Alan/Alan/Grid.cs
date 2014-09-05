@@ -35,6 +35,7 @@ namespace Alan
                     Color lePixel = leMiniMap.GetPixel(x, y);
 
                     //check for cliff
+                    /* TODO cliff detection here
                     if(lePixel.R > 81 && lePixel.R < 90)
                     {
                         if(lePixel.G > 50 && lePixel.G < 58) 
@@ -45,6 +46,7 @@ namespace Alan
                             }
                         }
                     }
+                    */
                     
                     //check for water
                     if(lePixel.R > 88 && lePixel.R < 92)
